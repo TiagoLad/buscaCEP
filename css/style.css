@@ -1,0 +1,128 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    background-image: url('../imagens/fundo__.jpg');
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa durante a rolagem */
+    color: #f0f0f0; /* Cor de texto padrão para boa leitura em fundos escuros */
+}
+.menu-toggle-label {
+    display: none; /* Fica oculto em telas grandes */
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001; /* Garante que fique acima da barra lateral quando ela aparecer */
+    font-size: 1.8rem;
+    color: white;
+    background-color: rgba(40, 40, 40, 0.8);
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero-section {
+    /* A propriedade flex: 1 faz esta seção crescer e ocupar o espaço disponível */
+    flex: 1;
+    
+    /* Usei flexbox aqui também para centralizar o conteúdo interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Adiciona uma sobreposição escura para garantir a legibilidade do texto */
+    /* Isso é opcional se a imagem de fundo já for escura o suficiente */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: white;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+main {
+    margin-left: 250px; /* Espaço para a barra lateral */
+    flex-grow: 1;
+}
+
+.site-footer {
+    background-color: #31345f;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+/* Estilos para espaçamento do formulário */
+        .form-group label {
+            display: block; /* Faz com que cada label ocupe uma linha inteira */
+            margin-top: 1em; /* Adiciona espaço (margem) acima de cada label */
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group a {
+            display: block; /* Garante que os campos e links também fiquem em suas próprias linhas */
+            margin-top: 0.25em; /* Adiciona um pequeno espaço entre o label e o campo/link */
+        }
+
+        /* Remove a margem do topo do primeiro label para um alinhamento melhor */
+        .form-group label:first-of-type {
+            margin-top: 0;
+        }
+
+.site-footer p {
+    margin: 0;
+}
+.about-container {
+    background-color: rgba(16, 5, 74, 0.75); /* Fundo quase preto e 75% opaco para ótima legibilidade */
+    
+    padding: 30px;
+    border-radius: 10px;
+    margin: 30px auto; /* Espaçamento entre seções e centralização */
+    max-width: 960px;  /* Largura máxima para melhor leitura em telas grandes */
+    width: 90%;        /* Largura responsiva */
+
+    /* Layout para alinhar imagem e texto */
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espaço entre a imagem e o texto */
+}
+
+.about-text {
+    flex: 1; /* Faz o container de texto ocupar o espaço restante */
+}
+/* Deixa o layout responsivo para celulares */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Empilha a imagem e o texto */
+        text-align: center;
+    }
+
+    main,
+    .site-footer {
+        margin-left: 0; /* Remove a margem lateral para o conteúdo ocupar a tela toda */
+    }
+}
+   
