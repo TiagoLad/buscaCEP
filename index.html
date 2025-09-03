@@ -14,10 +14,11 @@
                 <form class="contact-form" action="#" method="post">
                     <div class="form-group">
                         <label for="cep">Digite o seu CEP:</label>
-                        <input type="text" id="endereco_cep" onfocus="buscarCEP()" name="endereco_cep" size="30">
-
+                        <!-- 2. Usar 'onblur' para buscar o CEP somente quando o usuário sair do campo -->
+                        <input type="text" id="endereco_cep" onblur="buscarCEP()" name="endereco_cep" size="30" placeholder="Apenas números">
+                        
                         <label for="rua">Rua:</label>
-                        <input type="text" id="endereco_rua" onfocus="buscarCEP()" name="endereco_rua" size="30">
+                        <input type="text" id="endereco_rua" name="endereco_rua" size="30">
 
                         <label for="bairro">Bairro:</label>
                         <input type="text" id="endereco_bairro" name="endereco_bairro" size="30">
@@ -28,8 +29,9 @@
                         <label for="estado">Estado:</label>
                         <input type="text" id="endereco_estado" name="endereco_estado" size="30">
 
-                        <label for="servico">Busca realizada em:</label>
-                        <input type="text" id="endereco_servico" name="endereco_servico" size="30">
+                        <label for="servico">Serviço de busca:</label>
+                        <input type="text" id="endereco_servico" name="endereco_servico" size="30" readonly>
+                       
                     </div>                   
                 </form>
             </div>
@@ -41,6 +43,3 @@
     <script src="js/script.js"></script>
 </body>
 </html>
-</body>
-</html>
-
