@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="icon/localizacao.png" type="image/x-icon">
     <title>Busca CEP</title>
@@ -15,24 +16,18 @@
                 <form class="contact-form" action="#" method="post">
                     <div class="form-group">
                         <label for="cep">Digite o seu CEP:</label>
-                        <!-- 2. Usar 'onblur' para buscar o CEP somente quando o usuário sair do campo -->
-                        <input type="text" id="endereco_cep" onblur="buscarCEP()" name="endereco_cep" size="30" placeholder="Apenas números">
-                        
+                        <input type="text" id="endereco_cep" name="endereco_cep" size="30" placeholder="Apenas números">
+                        <button type="button" id="btn-buscar-cep">Buscar</button> 
                         <label for="rua">Rua:</label>
                         <input type="text" id="endereco_rua" name="endereco_rua" size="30">
-
                         <label for="bairro">Bairro:</label>
                         <input type="text" id="endereco_bairro" name="endereco_bairro" size="30">
-
                         <label for="cidade">Cidade:</label>
                         <input type="text" id="endereco_cidade" name="endereco_cidade" size="30">
-
                         <label for="estado">Estado:</label>
                         <input type="text" id="endereco_estado" name="endereco_estado" size="30">
-
                         <label for="servico">Serviço de busca:</label>
                         <input type="text" id="endereco_servico" name="endereco_servico" size="30" readonly>
-                       
                     </div>                   
                 </form>
             </div>
