@@ -5,20 +5,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pega as referências dos elementos do HTML que vamos usar.
     const cepInput = document.getElementById('endereco_cep');
     const searchButton = document.getElementById('btn-buscar-cep');
+    const newSearchButton = document.getElementById('btn-nova-busca');
 
     // Função para limpar os campos do formulário
-    const limparFormulario = () => {
+    // O parâmetro 'limparTudo' decide se o campo de CEP também será limpo.
+    const limparFormulario = (limparTudo = false) => {
         document.getElementById("endereco_rua").value = "";
         document.getElementById("endereco_bairro").value = "";
         document.getElementById("endereco_cidade").value = "";
         document.getElementById("endereco_estado").value = "";
         document.getElementById("endereco_servico").value = "";
+        if (limparTudo) {
+            cepInput.value = "";
+            // Restaura a borda padrão do campo CEP, caso estivesse com erro
+            cepInput.style.border = ''; // Remove o estilo inline para usar o da folha de estilo
+        }
     };
+
+    // Adiciona um ouvinte para o novo botão "Nova Busca"
+    newSearchButton.addEventListener('click', () => {
+        limparFormulario(true); // Limpa todos os campos, incluindo o CEP
+    });
 
     // Adiciona um "ouvinte" de evento de clique no botão.
     // A função 'async' aqui dentro será executada toda vez que o botão for clicado.
     searchButton.addEventListener('click', async () => {
-        limparFormulario(); // Limpa os campos antes de uma nova busca
+        limparFormulario(); // Limpa apenas os campos de resultado antes de uma nova busca
         const cep = cepInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
 
         // Valida se o CEP tem o formato correto
@@ -29,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return; // Para a execução
         }
         else {
-            cepInput.style.border = '1px solid #ccc'; // Restaura a borda se for válido
+            cepInput.style.border = ''; // Remove o estilo inline para usar o da folha de estilo
         }
 
         const url = `https://brasilapi.com.br/api/cep/v2/${cep}`;

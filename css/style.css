@@ -34,33 +34,24 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
-.hero-section {
-    /* A propriedade flex: 1 faz esta seção crescer e ocupar o espaço disponível */
-    flex: 1;
-    
-    /* Usei flexbox aqui também para centralizar o conteúdo interno */
+ 
+.title-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    /* Adiciona uma sobreposição escura para garantir a legibilidade do texto */
-    /* Isso é opcional se a imagem de fundo já for escura o suficiente */
-    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    gap: 15px; /* Espaço entre o ícone e o texto */
+    margin-bottom: 2rem; /* Espaço antes do formulário */
 }
 
-.hero-section h1 {
+.title-icon {
+    width: 48px;
+    height: 48px;
+}
+
+.title-container h1 {
     font-size: 3rem;
     margin: 0;
-    color: white;
-}
-
-.hero-section p {
-    font-size: 1.2rem;
-    color: white;
-    margin-top: 10px;
-    text-align: justify;
+    color: #212529; /* Cor escura para fundo claro */
 }
 
 main {
@@ -74,29 +65,114 @@ main {
     text-align: center;
     padding: 20px 0;
 }
-/* Estilos para espaçamento do formulário */
-        .form-group label {
-            display: block; /* Faz com que cada label ocupe uma linha inteira */
-            margin-top: 1em; /* Adiciona espaço (margem) acima de cada label */
-        }
+/* Estilos para o formulário com Floating Labels (inspirado no Bootstrap) */
+.form-floating {
+    position: relative;
+    margin-bottom: 1rem;
+}
 
-        .form-group input,
-        .form-group textarea,
-        .form-group a {
-            display: block; /* Garante que os campos e links também fiquem em suas próprias linhas */
-            margin-top: 0.25em; /* Adiciona um pequeno espaço entre o label e o campo/link */
-        }
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(3.5rem + 2px);
+    padding: 1rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057; /* Cor do texto do input */
+    background-color: #fff; /* Fundo branco do input */
+    background-clip: padding-box;
+    border: 1px solid #ced4da; /* Borda cinza claro */
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
-        /* Remove a margem do topo do primeiro label para um alinhamento melhor */
-        .form-group label:first-of-type {
-            margin-top: 0;
-        }
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-floating > .form-control {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem;
+}
+
+.form-floating > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem .75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out,transform .1s ease-in-out;
+    color: #6c757d; /* Cor do label */
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    opacity: .65;
+    transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+}
+
+/* O placeholder é necessário, mas não queremos que ele apareça */
+.form-control::placeholder {
+    color: transparent;
+}
+
+.btn-bd-primary {
+    color: #fff;
+    background-color: #31345f; /* Cor do rodapé para consistência */
+    border: 1px solid #5a5e9a;
+    border-radius: .25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+}
+
+.btn-bd-primary:hover {
+    background-color: #4a4e8c;
+    border-color: #7e83c2;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Espaço entre os botões */
+    margin-top: 1.5rem;
+}
+
+/* Estilo para o botão secundário (Nova Busca) */
+.btn-bd-secondary {
+    color: #31345f; /* Cor primária do tema */
+    background-color: transparent;
+    border: 1px solid #31345f; /* Borda com a cor primária */
+    border-radius: .25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+}
+
+.btn-bd-secondary:hover {
+    color: #fff;
+    background-color: #31345f; /* Inverte as cores no hover */
+}
+
+/* Ajuste de padding para ambos os botões */
+.form-group .btn-bd-primary,
+.form-group .btn-bd-secondary {
+    padding: 0.75rem 1.5rem;
+}
 
 .site-footer p {
     margin: 0;
 }
 .about-container {
-    background-color: rgba(16, 5, 74, 0.75); /* Fundo quase preto e 75% opaco para ótima legibilidade */
+    background-color: #fff; /* Fundo branco sólido */
     
     padding: 30px;
     border-radius: 10px;
@@ -124,17 +200,4 @@ main {
     .site-footer {
         margin-left: 0; /* Remove a margem lateral para o conteúdo ocupar a tela toda */
     }
-}
-   .btn-bd-primary {
-  --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
-  --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-  --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
-  --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
 }
